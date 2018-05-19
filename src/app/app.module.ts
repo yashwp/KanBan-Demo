@@ -1,8 +1,12 @@
+import {HttpClientModule} from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import {NgDragDropModule} from 'ng-drag-drop';
+
 
 import { AppComponent } from './app.component';
+import {CommonService} from './shared/services/common.service';
 
 
 @NgModule({
@@ -10,9 +14,11 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
+    HttpClientModule,
+    BrowserModule,
+    NgDragDropModule.forRoot()
   ],
-  providers: [],
+  providers: [CommonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

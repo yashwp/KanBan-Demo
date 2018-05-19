@@ -1,20 +1,74 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="app-container p-4 h-100v">
+  <div class="container">
+    <!-- Content here -->
+    <div class="row h-100">
+      <div class="col-4">
+        <div class="kanban border pb-3">
+          <div class="kanban-head p-3">
+            All Opportunities
+          </div>
+          <div class="kanban-body">
+            <ng-container *ngFor="let item of opportunities">
+              <div draggable [dragData]="item" [dragHandle]="'.drag-handle'" class="kanban-body-item m-3">
+                <div class="row">
+                  <div class="col-4">
+                    <img [src]="item?.profile_photo_urls?.thumb" class="img-thumb" alt="thumnail" />
+                  </div>
+                  <div class="col-8 pl-0 d-flex justify-content-between pr-4 py-2">
+                    <span>{{item?.title}}</span>
+                    <span class="lnr lnr-menu drag-handle"></span>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+            <div *ngIf="isLoadMoreShown" class="d-flex justify-content-center">
+              <a (click)="loadMore()" class="p-1 cursor-pointer">Load more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="kanban border pb-3">
+          <div class="kanban-head p-3">
+            Column 2
+          </div>
+          <div droppable (onDrop)="onItemDropColumn2($event)" class="kanban-body">
+            <ng-container *ngFor="let colItem of columnTwoItems">
+              <div class="kanban-body-item m-3">
+                <div class="row">
+                  <div class="col-4">
+                    <img [src]="colItem?.profile_photo_urls?.thumb" class="img-thumb" alt="thumnail" />
+                  </div>
+                  <div class="col-8 pl-0 py-2">
+                    {{colItem?.title}}
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="kanban border pb-3">
+          <div class="kanban-head p-3">
+            Column 3
+          </div>
+          <div droppable (onDrop)="onItemDropColumn3($event)" class="kanban-body">
+            <ng-container *ngFor="let colItem of columnThreeItems">
+              <div class="kanban-body-item m-3">
+                <div class="row">
+                  <div class="col-4">
+                    <img [src]="colItem?.profile_photo_urls?.thumb" class="img-thumb" alt="thumnail" />
+                  </div>
+                  <div class="col-8 pl-0 py-2">
+                    {{colItem?.title}}
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-

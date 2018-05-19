@@ -1,1 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+.h-100v {
+  min-height: 100vh;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.app-container .kanban {
+  max-height: 850px;
+  overflow-y: auto;
+  background-color: #f5f7fd;
+}
+
+.app-container .kanban .kanban-head {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 10;
+}
+
+.app-container .kanban-body {
+  min-height: 30px;
+}
+
+.app-container .kanban-body .drag-handle:hover {
+  cursor: grab;
+}
+
+.app-container .kanban-body-item {
+  background-color: #fff;
+  height: 80px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  box-shadow: 0 2px 20px 0 hsla(0,0%,82%,.4);
+}
+
+.app-container .kanban .kanban-body-item .img-thumb{
+  height: 80px;
+}
